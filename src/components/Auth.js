@@ -23,7 +23,7 @@ const Auth = (props) => {
         };
 
         await axios
-            .post('http://localhost:5001/auth/login', loginData)
+            .post('https://todo-app-backend-tmfk.onrender.com/auth/login', loginData)
             .then(({data}) => {
                 localStorage.setItem('profile', JSON.stringify(data));
                 setAuth(true);
@@ -60,7 +60,7 @@ const Auth = (props) => {
                     password
                 }
                 await axios
-                    .post('http://localhost:5001/auth/signup', signupData)
+                    .post('https://todo-app-backend-tmfk.onrender.com/auth/signup', signupData)
                     .then(({data}) => {
                         localStorage.setItem('profile', JSON.stringify(data));
                         setAuth(true);
