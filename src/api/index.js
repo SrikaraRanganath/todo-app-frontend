@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:5001' });
+const api = axios.create({ baseURL: 'https://todo-app-backend-tmfk.onrender.com' });
 api.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')) {
         const profile = JSON.parse (localStorage.getItem('profile'));
