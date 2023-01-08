@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Navbar from './components/Navbar';
+import Todos from './components/Todos';
+import Auth from './components/Auth';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    
+    const [auth, setAuth] = useState(localStorage.getItem('profile') ? true : false);
+    return (
+        <div>
+            <Router>
+                <Navbar auth={auth} setAuth={setAuth} />
+                <Routes>
+                    <Route path='/' element={<Todos auth={auth}/>} />
+                    <Route path='/login' element={<Auth component='Login' setAuth={setAuth} />} />
+                    <Route path='/signup' element={<Auth component='Signup' setAuth={setAuth} />} />
+                    <Route path='/:id' element={<Todos auth={auth}/>} />
+                </Routes>
+            </Router>
+        </div>
+    )
 }
 
 export default App;
